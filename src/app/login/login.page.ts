@@ -10,10 +10,9 @@ export class LoginPage {
 
   constructor(private navCtrl: NavController) {}
 
-  // Fonction de connexion (à personnaliser)
+
   login() {
-    // Insérez ici votre logique de connexion
-    // Par exemple, rediriger l'utilisateur vers une autre page après la connexion
+  
     this.navCtrl.navigateForward('/home');
   }
 

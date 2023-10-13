@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signin',
-  templateUrl: './signin.page.html',
-  styleUrls: ['./signin.page.scss'],
+  templateUrl: 'signin.page.html',
+  styleUrls: ['signin.page.scss']
 })
-export class SigninPage implements OnInit {
+export class SigninPage {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) {}
 
-  ngOnInit() {
+  // Fonction d'inscription (à personnaliser)
+  signup() {
+    // Insérez ici votre logique d'inscription
+    // Par exemple, rediriger l'utilisateur vers une autre page après l'inscription
+    this.navCtrl.navigateForward('/home');
   }
 
 }

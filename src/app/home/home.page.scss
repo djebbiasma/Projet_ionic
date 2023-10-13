@@ -1,39 +1,40 @@
 .bg-img {
-  padding: 0; /* Réglage de la marge de remplacement à 0 */
-  height: 100vh; /* 100% de la hauteur de la fenêtre visible (viewport height) */
+  padding: 0; 
+  height: 100vh;
   width: 100%;
   // background-image: url('../../assets/bg-img.jpg');
+  --background: linear-gradient(to bottom, #3498db, #2980b9);
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* Définition de la classe CSS pour les éléments de la liste des annonces */
+
 .annonce-item {
-  border: 1px solid #ddd; /* Bordure pour chaque élément */
-  margin-bottom: 10px; /* Espacement entre les éléments */
-  padding: 10px; /* Espacement interne */
-  border-radius: 10px; /* Arrondi des coins */
-  background-color: transparent; /* Fond transparent */
+  border: 1px solid #ddd; 
+  margin-bottom: 10px; 
+  padding: 10px; 
+  border-radius: 10px; 
+  background-color: transparent; 
   
 }
  .searchbar{
   background-color: transparent;
 
 }
-/* Style pour le titre */
+
 h2 {
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-/* Style pour la description */
+
 p {
   font-size: 1rem;
   color: #555;
 }
 
-/* Style pour le bouton "Voir Détails" */
+
 ion-button {
-  --color: primary; /* Couleur du bouton */
+  --color: primary; 
   font-size: 0.9rem;
 }
 #thumbnail-round {
