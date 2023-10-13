@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  templateUrl: 'login.page.html',
+  styleUrls: ['login.page.scss']
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) {}
 
-  ngOnInit() {
+  // Fonction de connexion (à personnaliser)
+  login() {
+    // Insérez ici votre logique de connexion
+    // Par exemple, rediriger l'utilisateur vers une autre page après la connexion
+    this.navCtrl.navigateForward('/home');
   }
 
 }
