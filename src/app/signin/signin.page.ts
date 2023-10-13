@@ -10,10 +10,9 @@ export class SigninPage {
 
   constructor(private navCtrl: NavController) {}
 
-  // Fonction d'inscription (à personnaliser)
+ 
   signup() {
-    // Insérez ici votre logique d'inscription
-    // Par exemple, rediriger l'utilisateur vers une autre page après l'inscription
+   
     this.navCtrl.navigateForward('/home');
   }
 
