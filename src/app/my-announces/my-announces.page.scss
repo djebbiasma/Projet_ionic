@@ -1,0 +1,43 @@
+.bg-img {
+    padding: 0; 
+    height: 100vh;
+    width: 100%;
+    // background-image: url('../../assets/bg-img.jpg');
+    --background: linear-gradient(to bottom, #3498db, #2980b9);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .annonce-item {
+    border: 1px solid #ddd; 
+    margin-bottom: 10px; 
+    padding: 10px; 
+    border-radius: 10px; 
+    background-color: transparent; 
+    
+  }
+   .searchbar{
+    background-color: transparent;
+  
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  
+  p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  
+  ion-button {
+    --color: primary; 
+    font-size: 0.9rem;
+  }
+  #thumbnail-round {
+    --size: 80px;
+    --border-radius: 45px;
+  }
