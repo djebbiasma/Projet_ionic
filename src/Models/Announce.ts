@@ -1,5 +1,5 @@
 export interface Announce {
-    id:number,
+      _id:string,
       name: string;
       image: string;
       category:string;

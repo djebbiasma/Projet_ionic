@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Announce } from 'src/Models/Announce';
+import { AnnouceServiceService } from '../service/annouce-service.service';
 
 @Component({
   selector: 'app-announce-details',
@@ -6,17 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./announce-details.page.scss'],
 })
 export class AnnounceDetailsPage implements OnInit {
+  announcement?: Announce|null;
 
-  constructor() { }
-
-  announcement = {
-    name:"IPhone 15",
-    image:"https://media.istockphoto.com/id/1197063359/fr/photo/femme-utilisant-le-smartphone-diphone-11-pro-dapple.jpg?s=2048x2048&w=is&k=20&c=4oPKhBJR-8OELOhqu1hjrm072dTTrRJc-3mSAvc1tyw=",
-    category:"Phones",
-    description:"The best iphone 15 ever with good price",
-    price:"6000 DT"
+  constructor(private service: AnnouceServiceService, private route: ActivatedRoute) {
   }
+
   ngOnInit() {
-  }
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
 
+      if (id) {
+        this.service.getAnnounceById(id).subscribe((data: Announce) => {
+          this.announcement = data; 
+        });
+      }
+    });
+  }
 }
