@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./announce-form/announce-form.module').then( m => m.AnnounceFormPageModule)
   },
   {
-    path: 'announce-details',
+    path: 'announce-details/:id',
     loadChildren: () => import('./announce-details/announce-details.module').then( m => m.AnnounceDetailsPageModule)
   },
   {
