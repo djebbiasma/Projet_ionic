@@ -1,34 +1,111 @@
+<<<<<<< HEAD
+
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Liste des Annonces</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">This is the menu content.</ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+=======
 <div class="ion-page">
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Announces</ion-title>
-      </ion-toolbar>
-    </ion-header>
-  
-    <ion-content class="ion-padding">
-      <div class="bg-img">
-        <ion-list>
-          <ion-item *ngFor="let annonce of annonces" class="annonce-item">
-            <ion-thumbnail slot="start">
-              <img [src]="annonce.image" alt="Miniature de l'annonce" />
-            </ion-thumbnail>
-            <ion-label>
-              <h2>{{ annonce.name }}</h2>
-              <p>{{ annonce.description }}</p>
-            </ion-label>
-            <ion-label slot="end" fill="clear">{{ annonce.price }}</ion-label>
-          </ion-item>
-        </ion-list>
-      </div>
-      <div class="fab-container">
-        <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-          <ion-fab-button [routerLink]="'/announce-form'">
-            <ion-icon name="add"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
-      </div>
-    </ion-content>
+>>>>>>> 6bcf10c0062d80ce3bbcab377de0b0835c44809f
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+<<<<<<< HEAD
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <div class="bg-img">
+      <ion-list>
+        <ion-item *ngFor="let annonce of annoncesFiltrees" class="annonce-item">
+          <ion-thumbnail slot="start" id="thumbnail-round">
+            <img src="https://ionicframework.com/docs/img/demos/thumbnail.svg" alt="Miniature de l'annonce" />
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ annonce.titre }}</h2>
+          
+            <p>{{ annonce.description }}</p>
+          </ion-label>
+          <ion-button fill="clear">Voir Détails</ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
+    
+    
+    <div class="fab-container">
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button>
+=======
+      <ion-title>Announces</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <div class="bg-img">
+      <ion-list>
+        <ion-item *ngFor="let annonce of annonces" class="annonce-item">
+          <ion-thumbnail slot="start">
+            <img [src]="annonce.image" alt="Miniature de l'annonce" />
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ annonce.name }}</h2>
+            <p>{{ annonce.description }}</p>
+          </ion-label>
+          <ion-label slot="end" fill="clear">{{ annonce.price }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="fab-container">
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button [routerLink]="'/announce-form'">
+>>>>>>> 6bcf10c0062d80ce3bbcab377de0b0835c44809f
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+  </ion-content>
+</div>
+<<<<<<< HEAD
+
+<!-- <ion-content class="ion-padding">
+  <div class="bg-img">
+    <ion-list>
+      <ion-item *ngFor="let annonce of annoncesFiltrees" class="annonce-item">
+        <ion-thumbnail slot="start" id="thumbnail-round">
+          <img src="https://ionicframework.com/docs/img/demos/thumbnail.svg" alt="Miniature de l'annonce" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ annonce.titre }}</h2>
+        
+          <p>{{ annonce.description }}</p>
+        </ion-label>
+        <ion-button fill="clear">Voir Détails</ion-button>
+      </ion-item>
+    </ion-list>
   </div>
+  
+  
+  <div class="fab-container">
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</ion-content> -->
+=======
+>>>>>>> 6bcf10c0062d80ce3bbcab377de0b0835c44809f
