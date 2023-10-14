@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{announcement.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-img [src]="announcement.image"></ion-img>
+    <ion-card-content>
+      <ion-card-title>{{ announcement.name }}</ion-card-title>
+      <ion-card-subtitle>{{ announcement.category }}</ion-card-subtitle>
+      <p>{{ announcement.description }}</p>
+      <ion-label>Price: {{ announcement.price }}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

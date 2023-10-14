@@ -1,0 +1,52 @@
+<div class="ion-page">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Announces</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content>
+    <form [formGroup]="productForm">
+      <ion-item>
+        <ion-label for="name">Name:</ion-label>
+        <ion-input type="text" id="name" formControlName="name" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="description">Description:</ion-label>
+        <ion-textarea id="description" formControlName="description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="Price">Price:</ion-label>
+        <ion-input type="number" id="Price" formControlName="Price" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="Quantity">Quantity:</ion-label>
+        <ion-input type="number" id="Quantity" formControlName="Quantity" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="Images">Images:</ion-label>
+        <ion-input type="text" id="Images" formControlName="Images"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="Category">Category:</ion-label>
+        <ion-select id="Category" formControlName="Category" required>
+          <ion-select-option value="Category1">Category 1</ion-select-option>
+          <ion-select-option value="Category2">Category 2</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </form>
+  </ion-content>
+
+  <ion-footer>
+    <ion-button expand="full" type="submit">Submit</ion-button>
+  </ion-footer>
+</div>

@@ -35,6 +35,18 @@ const routes: Routes = [
     path: 'categories',
     loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesPageModule)
   },
+  {
+    path: 'announce-form',
+    loadChildren: () => import('./announce-form/announce-form.module').then( m => m.AnnounceFormPageModule)
+  },
+  {
+    path: 'announce-details',
+    loadChildren: () => import('./announce-details/announce-details.module').then( m => m.AnnounceDetailsPageModule)
+  },
+  {
+    path: 'my-announces',
+    loadChildren: () => import('./my-announces/my-announces.module').then( m => m.MyAnnouncesPageModule)
+  },
 ];
 
 @NgModule({
