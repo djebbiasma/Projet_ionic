@@ -8,6 +8,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { LoginService } from './service/login-service.service';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,HttpClientModule,  IonicModule.forRoot(), AppRoutingModule,FormsModule,],
