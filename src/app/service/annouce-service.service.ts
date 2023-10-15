@@ -15,7 +15,7 @@ export class AnnouceServiceService {
 
 
   constructor(private http: HttpClient) {}
-
+  
 
   getAnnouncements() {
     const headers = new HttpHeaders({
@@ -31,17 +31,24 @@ export class AnnouceServiceService {
     return  this.http.get<Announce>(this.apiUrl+id, { headers });
   }
 
-    getIdUserFromToke(){
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.token}`,
-    });
-    return   this.http.get<string>("localhost:5000/user/GetDataFromToken",{headers})
-  }
 
-   getUserAnnounces() {
+  getIdUserFromToke() {
+    const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+    });
+
+    const tokenData = { token: this.token };
+
+    return this.http.post<string>("http://localhost:5000/user/GetDataFromToken", tokenData, { headers });
+}
+
+
+  userId!:string;
+  
+   getUserAnnounces(id:string) {
     try {
-      const idUser =  this.getIdUserFromToke(); 
-      const endpoint = `http://localhost:5000/Product/ProductsByUser/${idUser}`;
+      
+      const endpoint = `http://localhost:5000/Product/ProductsByUser/${id}`;
       
       const headers = new HttpHeaders({
         Authorization: `Bearer ${this.token}`,
@@ -56,15 +63,10 @@ export class AnnouceServiceService {
 
 
 
-  addProduct(product: Announce) {
+  addProduct(product: Announce,userid:string) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
     });
-    var userid;
-    this.getIdUserFromToke().subscribe(
-      (data) => {
-        userid= data;
-      });
 
     const newProduct = {
       name: product.name,
