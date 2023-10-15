@@ -1,10 +1,10 @@
+
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Inscription</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content class="ion-padding">
+<!-- <ion-content class="ion-padding">
   <div class="signup-container">
     <ion-item>
       <ion-label position="floating">Nom d'utilisateur</ion-label>
@@ -23,5 +23,32 @@
     </ion-item>
 
     <ion-button expand="full" (click)=" registerUser()">S'inscrire</ion-button>
+  </div>
+</ion-content> -->
+
+
+<ion-content>
+  <form #myForm="ngForm" (ngSubmit)="registerUser()">
+
+    <ion-item>
+      <ion-label>Nom et prénom</ion-label>
+      <ion-input type="email" [(ngModel)]="user.name" name="name" required></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input [(ngModel)]="user.password" name="password" required></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" expand="block">S'inscrire</ion-button>
+  </form>
+  <div >
+    Vous avez un compte ? <a routerLink="/login">Connectez-vous ici</a>
   </div>
 </ion-content>

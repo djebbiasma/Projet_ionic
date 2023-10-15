@@ -18,5 +18,10 @@ export class AppComponent {
     this.router.navigate([route]); 
   }
 
+  logout(){
+    localStorage.clear();
+    this.navCtrl.navigateForward('/login');
+
+  }
 
 }
