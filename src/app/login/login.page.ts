@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../service/login-service.service';
+
 import { NavController } from '@ionic/angular';
+
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -8,6 +12,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['login.page.scss']
 })
 export class LoginPage {
+
   email: string = '';
   password: string = '';
 
@@ -26,4 +31,5 @@ export class LoginPage {
       this.navCtrl.navigateForward('/home'); },
       error: err => console.log('Erreur lors de la connexion :', err)
     });  }
+
 }

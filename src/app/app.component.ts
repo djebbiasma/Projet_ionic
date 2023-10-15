@@ -10,7 +10,7 @@ import { MenuController, NavController } from '@ionic/angular';
 export class AppComponent {
   constructor(
     private menuController: MenuController,
-    private router: Router
+    private router: Router, private navCtrl: NavController 
   ) { }
 
   closeMenuAndNavigate(route: string) {
