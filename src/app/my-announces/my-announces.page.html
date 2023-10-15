@@ -23,7 +23,7 @@
         </ion-item>
 
         <ion-item-options side="end">
-          <ion-item-option>Update</ion-item-option>
+          <ion-item-option [routerLink]="['/update_annonce', annonce._id]">Update</ion-item-option>
           <ion-item-option color="danger" (click)="deleteAnnounce(annonce._id)" expandable>Delete</ion-item-option>
         </ion-item-options>
       </ion-item-sliding>

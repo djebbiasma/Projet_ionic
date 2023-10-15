@@ -87,4 +87,13 @@ export class AnnouceServiceService {
     return   this.http.delete<string>(this.apiUrl+"DeleteProduct/"+id,{headers})
   }
   
+
+  updateProduct(productId: string, productData: Announce) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+  
+    return this.http.put<Announce>(`${this.apiUrl}UpdateProduct/${productId}`, productData, { headers });
+  }
+  
 }
