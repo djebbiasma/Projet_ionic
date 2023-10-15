@@ -6,15 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:5000/user'; // Remplacez par l'URL de votre API Node.js
+  private url = 'http://localhost:5000/user/login'; // Remplacez par l'URL de votre API Node.js
 
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {
     const loginData = { Email: email, Password: password };
-
-    return this.http.post(`${this.apiUrl}/login`, loginData);
+    return this.http.post(this.url, loginData);
   }
 
-  // Vous pouvez ajouter d'autres méthodes d'authentification ici (inscription, déconnexion, etc.).
 }

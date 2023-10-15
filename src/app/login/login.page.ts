@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../service/login-service.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -7,23 +8,22 @@ import { LoginService } from '../service/login-service.service';
   styleUrls: ['login.page.scss']
 })
 export class LoginPage {
-  email: string = ''; // Initialisez ces valeurs à des chaînes vides
+  email: string = '';
   password: string = '';
 
-  constructor(private loginService: LoginService) {}
 
-  login() {
-    // Utilisez les valeurs de l'email et du mot de passe saisies par l'utilisateur
-    this.loginService.login(this.email, this.password).subscribe(
-      (response) => {
-        console.log('Réponse de l\'API après la connexion :', response);
+  formData = {
+    email: '',
+    password: '',
+  };
 
-        // Vous pouvez gérer la réponse de l'API ici (par exemple, stocker le token, rediriger l'utilisateur, etc.).
-      },
-      (error) => {
-        console.error('Erreur lors de la connexion :', error);
-        // Gérez les erreurs d'authentification ici.
-      }
-    );
-  }
+  constructor(private loginService: LoginService, private navCtrl: NavController) {}
+  ngOnInit() {}
+
+  onSubmit() {
+    this.loginService.login(this.formData.email, this.formData.password).subscribe({
+      next: response => {localStorage.setItem("token",JSON.stringify(response).substring(12, JSON.stringify(response).length - 2));
+      this.navCtrl.navigateForward('/home'); },
+      error: err => console.log('Erreur lors de la connexion :', err)
+    });  }
 }
