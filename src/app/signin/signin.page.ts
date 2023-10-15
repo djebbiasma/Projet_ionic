@@ -10,7 +10,7 @@ import{UserService } from '../service/signin-service.service'
 })
 export class SigninPage {
   user: any = {  // Déclarez la propriété user ici
-    name: '',
+    username: '',
     email: '',
     password: ''
   };

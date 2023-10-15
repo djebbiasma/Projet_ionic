@@ -10,7 +10,7 @@ export class LoginPage {
   email: string = ''; // Initialisez ces valeurs à des chaînes vides
   password: string = '';
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService) { }
 
   login() {
     // Utilisez les valeurs de l'email et du mot de passe saisies par l'utilisateur
@@ -18,7 +18,7 @@ export class LoginPage {
       (response) => {
         console.log('Réponse de l\'API après la connexion :', response);
 
-        // Vous pouvez gérer la réponse de l'API ici (par exemple, stocker le token, rediriger l'utilisateur, etc.).
+        localStorage.setItem('authToken', response.token);
       },
       (error) => {
         console.error('Erreur lors de la connexion :', error);

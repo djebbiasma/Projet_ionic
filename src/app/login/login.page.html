@@ -8,12 +8,11 @@
   <div class="login-container">
     <ion-item>
       <ion-label position="floating">Nom d'utilisateur</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input [(ngModel)]="email" type="text"></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label position="floating">Mot de passe</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
 
     <ion-button expand="full" color="primary" (click)="login()">Se connecter</ion-button>

@@ -18,3 +18,5 @@ export class LoginService {
 
   // Vous pouvez ajouter d'autres méthodes d'authentification ici (inscription, déconnexion, etc.).
 }
+
+
