@@ -1,34 +1,40 @@
-<div class="ion-page">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>My Announces</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Announces</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content class="ion-padding">
-    <div class="bg-img">
-      <ion-list>
-        <ion-item *ngFor="let annonce of annonces" class="annonce-item">
+<ion-content class="ion-padding">
+  <div class="bg-img">
+    <ion-list>
+      <ion-item-sliding *ngFor="let annonce of announces" class="annonce-item" >
+        <ion-item (click)="onItemClick(annonce._id)">
           <ion-thumbnail slot="start">
-            <img [src]="annonce.image" alt="Miniature de l'annonce" />
+            <img [src]="annonce.Images" alt="Miniature de l'annonce" />
           </ion-thumbnail>
           <ion-label>
             <h2>{{ annonce.name }}</h2>
             <p>{{ annonce.description }}</p>
           </ion-label>
-          <ion-label slot="end" fill="clear">{{ annonce.price }}</ion-label>
+          <ion-label slot="end" fill="clear">{{ annonce.Price }}</ion-label>
         </ion-item>
-      </ion-list>
-    </div>
-    <div class="fab-container">
-      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button [routerLink]="'/announce-form'">
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
-    </div>
-  </ion-content>
-</div>
+
+        <ion-item-options side="end">
+          <ion-item-option>Update</ion-item-option>
+          <ion-item-option color="danger" (click)="deleteAnnounce(annonce._id)" expandable>Delete</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <div class="fab-container">
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button [routerLink]="'/announce-form'">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</ion-content>
