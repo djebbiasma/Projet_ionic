@@ -8,9 +8,11 @@ import { MenuController, NavController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
+=======
   constructor(
     private menuController: MenuController,
-    private router: Router
+    private router: Router, private navCtrl: NavController 
   ) { }
 
   closeMenuAndNavigate(route: string) {
@@ -18,5 +20,10 @@ export class AppComponent {
     this.router.navigate([route]); 
   }
 
+  logout(){
+    localStorage.clear();
+    this.navCtrl.navigateForward('/login');
+
+  }
 
 }

@@ -10,9 +10,8 @@ export class AnnouceServiceService {
   annonces!: Announce[];
   apiUrl = 'http://localhost:5000/Product/';
 
-  //const token = localStorage.getItem('token'); 
-  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTI5MjQ3ZTgyYzI3YzRjYzk3OWM4N2MiLCJFbWFpbCI6ImFsYXRvcmsyQGdtYWlsLmNvbSIsIkZpcnN0X25hbWUiOiJhbGEiLCJMYXN0X25hbWUiOiJ0b3JraGFuaSIsInRpbWUiOiJGcmkgT2N0IDEzIDIwMjMgMjM6MzM6MTYgR01UKzAxMDAgKENlbnRyYWwgRXVyb3BlYW4gU3RhbmRhcmQgVGltZSkiLCJpYXQiOjE2OTcyMzYzOTZ9.qQAPBz0rQK_5TfkDUp0JS5EsoF82mAejXwsr-potE3Q" 
-
+   token = localStorage.getItem('token');
+  //token:string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTI5MjQ3ZTgyYzI3YzRjYzk3OWM4N2MiLCJFbWFpbCI6ImFsYXRvcmsyQGdtYWlsLmNvbSIsIkZpcnN0X25hbWUiOiJhbGEiLCJMYXN0X25hbWUiOiJ0b3JraGFuaSIsInRpbWUiOiJGcmkgT2N0IDEzIDIwMjMgMjM6MzM6MTYgR01UKzAxMDAgKENlbnRyYWwgRXVyb3BlYW4gU3RhbmRhcmQgVGltZSkiLCJpYXQiOjE2OTcyMzYzOTZ9.qQAPBz0rQK_5TfkDUp0JS5EsoF82mAejXwsr-potE3Q"
 
   constructor(private http: HttpClient) {}
   
@@ -47,14 +46,16 @@ export class AnnouceServiceService {
   
    getUserAnnounces(id:string) {
     try {
+
       
       const endpoint = `http://localhost:5000/Product/ProductsByUser/${id}`;
       
+
       const headers = new HttpHeaders({
         Authorization: `Bearer ${this.token}`,
       });
-      
-      return  this.http.get<Announce[]>(endpoint, { headers }); 
+
+      return  this.http.get<Announce[]>(endpoint, { headers });
     } catch (error) {
       console.error('Error getting user announces:', error);
       throw error;
@@ -64,6 +65,7 @@ export class AnnouceServiceService {
 
 
   addProduct(product: Announce,userid:string) {
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
     });
@@ -81,21 +83,22 @@ export class AnnouceServiceService {
     return this.http.post<Announce>(this.apiUrl + 'AddProducts', newProduct, { headers });
   }
 
-  
+
   deleteProdace(id:string){
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
     });
     return   this.http.delete<string>(this.apiUrl+"DeleteProduct/"+id,{headers})
   }
-  
+
 
   updateProduct(productId: string, productData: Announce) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
     });
-  
+
     return this.http.put<Announce>(`${this.apiUrl}UpdateProduct/${productId}`, productData, { headers });
   }
+
   
 }

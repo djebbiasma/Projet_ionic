@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<!-- <ion-content class="ion-padding">
   <div class="login-container">
     <ion-item>
       <ion-label position="floating">Nom d'utilisateur</ion-label>
@@ -12,14 +12,36 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Mot de passe</ion-label>
-      <ion-input [(ngModel)]="password" type="password"></ion-input>
+
+      <ion-input type="password" label="password" ngModel></ion-input>
+
     </ion-item>
 
-    <ion-button expand="full" color="primary" (click)="login()">Se connecter</ion-button>
+    <ion-button expand="full" color="primary" (click)="login(password)">Se connecter</ion-button>
 
     <div class="signup-link">
       Vous n'avez pas de compte ? <a href="/signin">Inscrivez-vous ici</a>
     </div>
   </div>
-</ion-content>
+</ion-content> -->
 
+<ion-content>
+  <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="formData.email" name="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input [(ngModel)]="formData.password" name="password" required></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" expand="block">se connecter</ion-button>
+  </form>
+
+  <div >
+    Vous n'avez pas de compte ? <a color="red" routerLink="/signin">Inscrivez-vous ici</a>
+  </div>
+</ion-content>

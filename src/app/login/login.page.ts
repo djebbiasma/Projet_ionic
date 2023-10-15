@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../service/login-service.service';
+
+import { NavController } from '@ionic/angular';
+
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -8,23 +12,24 @@ import { Router } from '@angular/router';
   styleUrls: ['login.page.scss']
 })
 export class LoginPage {
-  email: string = ''; 
+
+  email: string = '';
   password: string = '';
 
-  constructor(private loginService: LoginService  , private router: Router) { }
 
-  login() {
-    this.loginService.login(this.email, this.password).subscribe(
-      (response) => {
-        console.log('Réponse de l\'API après la connexion :', response);
+  formData = {
+    email: '',
+    password: '',
+  };
 
-        localStorage.setItem('authToken', response.token);
-        this.router.navigate(['/home']);
+  constructor(private loginService: LoginService, private navCtrl: NavController) {}
+  ngOnInit() {}
 
-      },
-      (error) => {
-        console.error('Erreur lors de la connexion :', error);
-      }
-    );
-  }
+  onSubmit() {
+    this.loginService.login(this.formData.email, this.formData.password).subscribe({
+      next: response => {localStorage.setItem("token",JSON.stringify(response).substring(12, JSON.stringify(response).length - 2));
+      this.navCtrl.navigateForward('/home'); },
+      error: err => console.log('Erreur lors de la connexion :', err)
+    });  }
+
 }
