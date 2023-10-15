@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
@@ -7,7 +8,15 @@ import { MenuController, NavController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(   ) {}
+  constructor(
+    private menuController: MenuController,
+    private router: Router
+  ) { }
+
+  closeMenuAndNavigate(route: string) {
+    this.menuController.close();
+    this.router.navigate([route]); 
+  }
 
 
 }

@@ -7,15 +7,15 @@
     </ion-header>
     <ion-content class="ion-padding">
       <ion-list>
-        <ion-item [routerLink]="['/']">
+        <ion-item (click)="closeMenuAndNavigate('/')">
           <ion-icon name="home" slot="start"></ion-icon>
           Home
         </ion-item>
-        <ion-item [routerLink]="['/profile']">
+        <ion-item (click)="closeMenuAndNavigate('/profile')">
           <ion-icon name="person" slot="start"></ion-icon>
           Profile
         </ion-item>
-        <ion-item [routerLink]="['/my-announces']">
+        <ion-item (click)="closeMenuAndNavigate('/my-announces')">
           <ion-icon name="basket" slot="start"></ion-icon>
           My Announces
         </ion-item>

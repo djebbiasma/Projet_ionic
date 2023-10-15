@@ -13,15 +13,25 @@ export class MyAnnouncesPage implements OnInit {
 
 
   constructor(private service: AnnouceServiceService , private router: Router) { }
+  
+    ngOnInit() {
+      this.service.getIdUserFromToke().subscribe(
+        (data)=>{
+          
+          this.service.getUserAnnounces(data.toString()).subscribe(
+            (data) => {
+              this.announces = data;
+            },
+            (error) => {
+              console.error('Error:', error);
+            });
+        },
+        (error)=>{
+          console.log("error : ",error); 
+        }
+        
+      )
 
-   async ngOnInit() {
-    await this.service.getAnnouncements().subscribe(
-      (data) => {
-        this.announces = data;
-      },
-      (error) => {
-        console.error('Error:', error);
-      });
   }
 
   onItemClick(id:string) {

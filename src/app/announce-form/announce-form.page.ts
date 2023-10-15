@@ -28,19 +28,24 @@ export class AnnounceFormPage implements OnInit {
   ngOnInit() {
   }
 
-  async onSubmit() {
+   onSubmit() {
     if (this.productForm.valid) {
       const productData = this.productForm.value;
-      await this.announceService.addProduct(productData).subscribe(
-        (result) => {
-          console.log('Product added successfully:', result);
-          window.location.href="my-announces";
-          //this.router.navigate(['my-announces']);
-        },
-        (error) => {
-          console.error('Error adding product:', error);
-        }
-      );
+     this.announceService.getIdUserFromToke().subscribe(
+      (data)=>{
+         this.announceService.addProduct(productData,data).subscribe(
+          (result) => {
+            console.log('Product added successfully:', result);
+            window.location.href="my-announces";
+            //this.router.navigate(['my-announces']);
+          },
+          (error) => {
+            console.error('Error adding product:', error);
+          }
+        );
+      }
+     );
+
     }
   }
   
