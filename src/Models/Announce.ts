@@ -1,8 +1,9 @@
 export interface Announce {
       _id:string,
       name: string;
-      image: string;
-      category:string;
+      Images: string;
+      Category:string;
       description:string;
-      price:string;
+      Price:Number;
+      Quantity:number
     }

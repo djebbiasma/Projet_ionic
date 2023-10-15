@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AnnouceServiceService } from '../service/annouce-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-announce-form',
@@ -10,7 +12,9 @@ export class AnnounceFormPage implements OnInit {
 
   productForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(  private formBuilder: FormBuilder,
+    private announceService: AnnouceServiceService,
+    private router :Router ) {
     this.productForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: [''],
@@ -18,11 +22,27 @@ export class AnnounceFormPage implements OnInit {
       Quantity: ['', Validators.required],
       Images: [''],
       Category: ['', Validators.required],
-      user: [''],
     });
   }
 
   ngOnInit() {
   }
+
+  async onSubmit() {
+    if (this.productForm.valid) {
+      const productData = this.productForm.value;
+      await this.announceService.addProduct(productData).subscribe(
+        (result) => {
+          console.log('Product added successfully:', result);
+          window.location.href="my-announces";
+          //this.router.navigate(['my-announces']);
+        },
+        (error) => {
+          console.error('Error adding product:', error);
+        }
+      );
+    }
+  }
+  
 
 }

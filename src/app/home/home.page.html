@@ -13,13 +13,13 @@
         <ion-list>
           <ion-item *ngFor="let annonce of annonces" class="annonce-item"  (click)="onItemClick(annonce._id)">
             <ion-thumbnail slot="start">
-              <img [src]="annonce.image" alt="Miniature de l'annonce" />
+              <img [src]="annonce.Images" alt="Miniature de l'annonce" />
             </ion-thumbnail>
             <ion-label>
               <h2>{{ annonce.name }}</h2>
               <p>{{ annonce.description }}</p>
             </ion-label>
-            <ion-label slot="end" fill="clear">{{ annonce.price }}</ion-label>
+            <ion-label slot="end" fill="clear">{{ annonce.Price }}</ion-label>
           </ion-item>
         </ion-list>
       </div>
