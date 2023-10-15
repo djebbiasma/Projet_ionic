@@ -6,11 +6,17 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
+  
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  
+
+
+
+
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -46,7 +52,11 @@ const routes: Routes = [
   {
     path: 'my-announces',
     loadChildren: () => import('./my-announces/my-announces.module').then( m => m.MyAnnouncesPageModule)
+  },  {
+    path: 'user-details',
+    loadChildren: () => import('./user-details/user-details.module').then( m => m.UserDetailsPageModule)
   },
+
 ];
 
 @NgModule({

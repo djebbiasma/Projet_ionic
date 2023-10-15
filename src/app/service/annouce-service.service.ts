@@ -14,7 +14,7 @@ export class AnnouceServiceService {
   //token:string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTI5MjQ3ZTgyYzI3YzRjYzk3OWM4N2MiLCJFbWFpbCI6ImFsYXRvcmsyQGdtYWlsLmNvbSIsIkZpcnN0X25hbWUiOiJhbGEiLCJMYXN0X25hbWUiOiJ0b3JraGFuaSIsInRpbWUiOiJGcmkgT2N0IDEzIDIwMjMgMjM6MzM6MTYgR01UKzAxMDAgKENlbnRyYWwgRXVyb3BlYW4gU3RhbmRhcmQgVGltZSkiLCJpYXQiOjE2OTcyMzYzOTZ9.qQAPBz0rQK_5TfkDUp0JS5EsoF82mAejXwsr-potE3Q"
 
   constructor(private http: HttpClient) {}
-
+  
 
   getAnnouncements() {
     const headers = new HttpHeaders({
@@ -30,17 +30,26 @@ export class AnnouceServiceService {
     return  this.http.get<Announce>(this.apiUrl+id, { headers });
   }
 
-    getIdUserFromToke(){
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.token}`,
-    });
-    return   this.http.get<string>("localhost:5000/user/GetDataFromToken",{headers})
-  }
 
-   getUserAnnounces() {
+  getIdUserFromToke() {
+    const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+    });
+
+    const tokenData = { token: this.token };
+
+    return this.http.post<string>("http://localhost:5000/user/GetDataFromToken", tokenData, { headers });
+}
+
+
+  userId!:string;
+  
+   getUserAnnounces(id:string) {
     try {
-      const idUser =  this.getIdUserFromToke();
-      const endpoint = `http://localhost:5000/Product/ProductsByUser/${idUser}`;
+
+      
+      const endpoint = `http://localhost:5000/Product/ProductsByUser/${id}`;
+      
 
       const headers = new HttpHeaders({
         Authorization: `Bearer ${this.token}`,
@@ -53,15 +62,13 @@ export class AnnouceServiceService {
     }
   }
 
-  addProduct(product: Announce) {
+
+
+  addProduct(product: Announce,userid:string) {
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
     });
-    var userid;
-    this.getIdUserFromToke().subscribe(
-      (data) => {
-        userid= data;
-      });
 
     const newProduct = {
       name: product.name,
@@ -93,4 +100,5 @@ export class AnnouceServiceService {
     return this.http.put<Announce>(`${this.apiUrl}UpdateProduct/${productId}`, productData, { headers });
   }
 
+  
 }

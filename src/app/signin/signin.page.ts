@@ -10,8 +10,10 @@ import{UserService } from '../service/signin-service.service'
 })
 export class SigninPage {
 
+
   user: any = {
     name: '',
+
     email: '',
     password: ''
   };

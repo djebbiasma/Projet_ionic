@@ -21,10 +21,10 @@ export class HomePage implements OnInit {
   ngOnInit(): void {
 
     //const token = localStorage.getItem('token'); 
-    this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTI5MjQ3ZTgyYzI3YzRjYzk3OWM4N2MiLCJFbWFpbCI6ImFsYXRvcmsyQGdtYWlsLmNvbSIsIkZpcnN0X25hbWUiOiJhbGEiLCJMYXN0X25hbWUiOiJ0b3JraGFuaSIsInRpbWUiOiJGcmkgT2N0IDEzIDIwMjMgMjM6MzM6MTYgR01UKzAxMDAgKENlbnRyYWwgRXVyb3BlYW4gU3RhbmRhcmQgVGltZSkiLCJpYXQiOjE2OTcyMzYzOTZ9.qQAPBz0rQK_5TfkDUp0JS5EsoF82mAejXwsr-potE3Q" 
+    this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N…MxNX0.pglXWbJk3G5E0_Pg7KrOgP4esCmL7nBZHDnShSYfEmw"
     this.service.getAnnouncements().subscribe(
       (data) => {
-        this.annonces = data;
+        this.annonces = data; 
       },
       (error) => {
         console.error('Error:', error);
