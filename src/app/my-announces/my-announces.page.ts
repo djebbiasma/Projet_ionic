@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Announce } from 'src/Models/Announce';
+import { AnnouceServiceService } from '../service/annouce-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-announces',
@@ -6,27 +9,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-announces.page.scss'],
 })
 export class MyAnnouncesPage implements OnInit {
+  announces: Announce[] | null = null;
 
-  constructor() { }
 
-  annonces = [
-    {
-      name:"IPhone 15",
-      image:"https://media.istockphoto.com/id/1197063359/fr/photo/femme-utilisant-le-smartphone-diphone-11-pro-dapple.jpg?s=2048x2048&w=is&k=20&c=4oPKhBJR-8OELOhqu1hjrm072dTTrRJc-3mSAvc1tyw=",
-      category:"Phones",
-      description:"The best iphone 15 ever with good price",
-      price:"6000 DT"
-    },
-    {
-      name:"IPhone 15",
-      image:"https://media.istockphoto.com/id/1197063359/fr/photo/femme-utilisant-le-smartphone-diphone-11-pro-dapple.jpg?s=2048x2048&w=is&k=20&c=4oPKhBJR-8OELOhqu1hjrm072dTTrRJc-3mSAvc1tyw=",
-      category:"Phones",
-      description:"The best iphone 15 ever with good price",
-      price:"6000 DT"
-    },
-  ];
+  constructor(private service: AnnouceServiceService , private router: Router) { }
 
-  ngOnInit() {
+   async ngOnInit() {
+    await this.service.getAnnouncements().subscribe(
+      (data) => {
+        this.announces = data;
+      },
+      (error) => {
+        console.error('Error:', error);
+      });
   }
 
+  onItemClick(id:string) {
+    this.router.navigate(['announce-details',id]);
+  }
+
+  async deleteAnnounce(id:string){
+   await  this.service.deleteProdace(id).subscribe(
+      (data)=>{
+        window.location.href="my-announces";
+        //this.router.navigate(['my-announces']);
+      },
+      (error)=>{
+        console.log(error);
+        
+      }
+    )
+  }
+  
 }

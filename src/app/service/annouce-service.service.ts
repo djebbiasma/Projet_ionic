@@ -30,5 +30,70 @@ export class AnnouceServiceService {
     });
     return  this.http.get<Announce>(this.apiUrl+id, { headers });
   }
+
+    getIdUserFromToke(){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+    return   this.http.get<string>("localhost:5000/user/GetDataFromToken",{headers})
+  }
+
+   getUserAnnounces() {
+    try {
+      const idUser =  this.getIdUserFromToke(); 
+      const endpoint = `http://localhost:5000/Product/ProductsByUser/${idUser}`;
+      
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      });
+      
+      return  this.http.get<Announce[]>(endpoint, { headers }); 
+    } catch (error) {
+      console.error('Error getting user announces:', error);
+      throw error;
+    }
+  }
+
+
+
+  addProduct(product: Announce) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+    var userid;
+    this.getIdUserFromToke().subscribe(
+      (data) => {
+        userid= data;
+      });
+
+    const newProduct = {
+      name: product.name,
+      description: product.description,
+      Price: product.Price,
+      Quantity: product.Quantity,
+      Images: product.Images,
+      Category: product.Category,
+      user: userid
+    };
+
+    return this.http.post<Announce>(this.apiUrl + 'AddProducts', newProduct, { headers });
+  }
+
+  
+  deleteProdace(id:string){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+    return   this.http.delete<string>(this.apiUrl+"DeleteProduct/"+id,{headers})
+  }
+  
+
+  updateProduct(productId: string, productData: Announce) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+  
+    return this.http.put<Announce>(`${this.apiUrl}UpdateProduct/${productId}`, productData, { headers });
+  }
   
 }

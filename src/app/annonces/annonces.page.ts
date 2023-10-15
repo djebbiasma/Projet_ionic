@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { AnnouceServiceService } from '../service/annouce-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Announce } from 'src/Models/Announce';
 
 @Component({
   selector: 'app-annonces',
@@ -8,29 +11,63 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['annonces.page.scss']
 })
 export class AnnoncesPage {
-  annonceForm: FormGroup;
-  categories: { id: number; name: string }[]; // Define the 'categories' property
+  announce!: Announce;
+  productForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private navCtrl: NavController) {
-    this.annonceForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      categoryId: [null, Validators.required]
+  constructor(
+    private formBuilder: FormBuilder,
+    private announceService: AnnouceServiceService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.productForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      description: [''],
+      Price: ['', Validators.required],
+      Quantity: ['', Validators.required],
+      Images: [''],
+      Category: ['', Validators.required],
     });
-
-    this.categories = [
-      { id: 1, name: 'Category 1' },
-      { id: 2, name: 'Category 2' },
-    
-    ];
   }
 
-  submitForm() {
-    if (this.annonceForm.valid) {
-      
-      const formData = this.annonceForm.value;
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
 
-      this.navCtrl.navigateForward('/annonces');
+      if (id) {
+        this.announceService.getAnnounceById(id).subscribe((data: Announce) => {
+          this.announce = data;
+          this.populateFormWithAnnounceData();
+        });
+      }
+    });
+  }
+
+  populateFormWithAnnounceData() {
+    if (this.announce) {
+      this.productForm.patchValue({
+        name: this.announce.name,
+        description: this.announce.description,
+        Price: this.announce.Price,
+        Quantity: this.announce.Quantity,
+        Images: this.announce.Images,
+        Category: this.announce.Category,
+      });
+    }
+  }
+
+  async onSubmit() {
+    if (this.productForm.valid) {
+      const productData = this.productForm.value;
+      await this.announceService.updateProduct(this.announce._id, productData).subscribe(
+        (result) => {
+          console.log('Product updated successfully:', result);
+          window.location.href="/my-announces"
+        },
+        (error) => {
+          console.error('Error updating product:', error);
+        }
+      );
     }
   }
 }
