@@ -97,4 +97,11 @@ export class AnnouceServiceService {
     return this.http.put<Announce>(`${this.apiUrl}UpdateProduct/${productId}`, productData, { headers });
   }
 
+  getProductByCategory(category:string){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.http.get<Announce[]>(this.apiUrl+"ProductsByCategory/"+category,{headers});
+  }
+
 }

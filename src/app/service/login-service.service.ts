@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private url = 'http://localhost:5000/user/login'; // Remplacez par l'URL de votre API Node.js
+  private url = 'http://localhost:5000/user/login';
 
   constructor(private http: HttpClient) {}
 

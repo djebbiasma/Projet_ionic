@@ -10,6 +10,7 @@ import { Announce } from 'src/Models/Announce';
   templateUrl: 'annonces.page.html',
   styleUrls: ['annonces.page.scss']
 })
+
 export class AnnoncesPage {
   announce!: Announce;
   productForm: FormGroup;
@@ -62,7 +63,7 @@ export class AnnoncesPage {
       await this.announceService.updateProduct(this.announce._id, productData).subscribe(
         (result) => {
           console.log('Product updated successfully:', result);
-          window.location.href="/my-announces"
+          window.location.href="/my-announces";
         },
         (error) => {
           console.error('Error updating product:', error);

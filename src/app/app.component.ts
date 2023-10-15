@@ -19,6 +19,7 @@ export class AppComponent {
   }
 
   logout(){
+    this.menuController.close();
     localStorage.clear();
     this.navCtrl.navigateForward('/login');
 

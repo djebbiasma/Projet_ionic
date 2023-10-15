@@ -28,7 +28,9 @@ export class LoginPage {
   onSubmit() {
     this.loginService.login(this.formData.email, this.formData.password).subscribe({
       next: response => {localStorage.setItem("token",JSON.stringify(response).substring(12, JSON.stringify(response).length - 2));
-      this.navCtrl.navigateForward('/home'); },
+      //this.navCtrl.navigateForward('/home'); 
+      window.location.href="/home"
+    },
       error: err => console.log('Erreur lors de la connexion :', err)
     });  }
 

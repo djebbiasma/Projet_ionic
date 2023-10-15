@@ -17,11 +17,8 @@ export class HomePage implements OnInit {
   constructor(private service: AnnouceServiceService , private router: Router) {}
 
 
-  token!:string;
+  //token!:string;
   ngOnInit(): void {
-
-    //const token = localStorage.getItem('token'); 
-    this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N…MxNX0.pglXWbJk3G5E0_Pg7KrOgP4esCmL7nBZHDnShSYfEmw"
     this.service.getAnnouncements().subscribe(
       (data) => {
         this.annonces = data; 
@@ -34,8 +31,34 @@ export class HomePage implements OnInit {
   onItemClick(id:string) {
     this.router.navigate(['announce-details',id]);
   }
-  
-  nouvelleAnnonce() {
-    // Implement the logic for creating a new announcement or navigate to a new announcement creation page.
+
+  selectedCategory: string = 'all'; 
+
+  filterByCategory() {
+    if (this.selectedCategory !== 'all') {
+      this.service.getProductByCategory(this.selectedCategory).subscribe(
+        (data) => {
+          this.annonces = data;
+        },
+        (error) => {
+          if (error.status === 404) {
+            this.annonces=[];
+            console.log('Category not found.');
+          } else {
+            // Handle other errors
+            console.error('Error:', error);
+          }
+        }
+      );
+    }else{
+      this.service.getAnnouncements().subscribe(
+        (data) => {
+          this.annonces = data; 
+        },
+        (error) => {
+          console.error('Error:', error);
+        });
+    }
   }
+
 }
