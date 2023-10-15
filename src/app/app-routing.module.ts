@@ -52,7 +52,11 @@ const routes: Routes = [
   {
     path: 'my-announces',
     loadChildren: () => import('./my-announces/my-announces.module').then( m => m.MyAnnouncesPageModule)
+  },  {
+    path: 'user-details',
+    loadChildren: () => import('./user-details/user-details.module').then( m => m.UserDetailsPageModule)
   },
+
 ];
 
 @NgModule({
