@@ -12,6 +12,7 @@
           Home
         </ion-item>
         <ion-item (click)="closeMenuAndNavigate('/profile')">
+
           <ion-icon name="person" slot="start"></ion-icon>
           Profile
         </ion-item>
@@ -20,7 +21,7 @@
           My Announces
         </ion-item>
 
-        <ion-item >
+        <ion-item (click)="logout()">
           <ion-icon name="log-out" slot="start"></ion-icon>
           Logout
         </ion-item>

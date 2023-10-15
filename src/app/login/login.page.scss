@@ -5,7 +5,7 @@ ion-content {
     justify-content: center;
     align-items: center;
   }
-  
+
   .login-container {
     background-color: #fff;
     border-radius: 8px;
@@ -13,22 +13,28 @@ ion-content {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
-  
+
   ion-item {
     margin-bottom: 15px;
   }
-  
+
   ion-button {
     margin-top: 20px;
   }
-  
+
   .signup-link {
     margin-top: 10px;
     font-size: 14px;
     color: #3498db;
     text-align: center;
   }
-  
+
   .signup-link a {
+    text-decoration: none;
+  }
+
+  a {
+    color: yellow;
+    background-color: transparent;
     text-decoration: none;
   }
